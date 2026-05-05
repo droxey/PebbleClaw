@@ -1,29 +1,38 @@
 {
-    "author": "Moddable",
-    "dependencies": {
-        "@moddable/pebbleproxy": "^0.1.0"
+  "name": "pebbleclaw",
+  "version": "1.0.0",
+  "author": "Moddable",
+  "keywords": [
+    "pebble-app"
+  ],
+  "dependencies": {
+    "@moddable/pebbleproxy": "^0.1.0"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "build": "pebble build",
+    "emulate:r2": "pebble install --emulator gabbro",
+    "emulate:t2": "pebble install --emulator emery",
+    "verify": "npm run lint && npm run test && npm run build",
+    "hooks:install": "git config core.hooksPath .githooks"
+  },
+  "pebble": {
+    "displayName": "PebbleClaw",
+    "enableMultiJS": true,
+    "messageKeys": [],
+    "projectType": "moddable",
+    "resources": {
+      "media": []
     },
-    "keywords": [
-        "pebble-app"
+    "sdkVersion": "3",
+    "targetPlatforms": [
+      "gabbro",
+      "emery"
     ],
-    "name": "hello-message.",
-    "pebble": {
-        "displayName": "JS - HTTPClient",
-        "enableMultiJS": true,
-        "messageKeys": [],
-        "projectType": "moddable",
-        "resources": {
-            "media": []
-        },
-        "sdkVersion": "3",
-        "targetPlatforms": [
-            "emery",
-            "gabbro"
-        ],
-        "uuid": "f42a4ccf-0358-4667-8b8b-a5a2f908f1d3",
-        "watchapp": {
-            "watchface": false
-        }
-    },
-    "version": "1.0.0"
+    "uuid": "f42a4ccf-0358-4667-8b8b-a5a2f908f1d3",
+    "watchapp": {
+      "watchface": false
+    }
+  }
 }
