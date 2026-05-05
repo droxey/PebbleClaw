@@ -35,3 +35,32 @@ This project uses the 2026 **Alloy JavaScript SDK** model:
 See:
 - `docs/alloy-2026-notes.md`
 - `docs/c-with-alloy.md`
+
+## Codex environment bootstrap
+Use the project script to install only required runtime pieces and cache tools in a Codex-local directory:
+
+```bash
+./scripts/setup-codex-env.sh
+```
+
+What it does:
+- Installs required shared libs via apt without a full system upgrade.
+- Installs `uv` (if missing).
+- Installs `pebble-tool` using Python 3.12.
+- Creates a `pebble` shim that points to `pebble-tool` so existing npm scripts work.
+- Installs the latest Pebble SDK.
+- Writes `~/.codex-env` so future Codex tasks reuse caches.
+
+To make Codex use the cached toolchain, load the generated env file in shell init for tasks:
+
+```bash
+source ~/.codex-env
+```
+
+Quick verification:
+
+```bash
+uv --version
+pebble-tool --version
+pebble --version
+```
